@@ -22,13 +22,13 @@ namespace Dijkstra
 			graph.Add(new List<int> { -1, 3, -1, 5, -1, 6 });
 			graph.Add(new List<int> { -1, -1, 4, -1, 6, -1 });
 
-			printGraph(graph);
+			PrintGraph(graph);
 
 			Dijkstra(graph, 0, 0);
 		}
 
 
-		static void printGraph(List<List<int>> graph)
+		static void PrintGraph(List<List<int>> graph)
 		{
 			for (int i = 0; i < graph.Count; i++)
 			{
