@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 
 namespace Dijkstra
 {
@@ -47,7 +48,7 @@ namespace Dijkstra
 
 		private static void Print(List<int> distance, int verticesCount)
 		{
-			Console.WriteLine("Vertex    Distance from source");
+			Console.WriteLine("\nVertex    Distance from source");
 
 			for (int i = 0; i < verticesCount; ++i)
 				Console.WriteLine("{0}\t  {1}", i, distance[i]);
@@ -55,6 +56,9 @@ namespace Dijkstra
 
 		static void Dijkstra(List<List<int>> graph, int sourceX, int sourceY)
 		{
+			//start stopwatch to get runtime
+			var watch = Stopwatch.StartNew();
+
 			List<int> distances = new List<int>();
 			List<bool> shortestPathSet = new List<bool>();
 
@@ -89,7 +93,14 @@ namespace Dijkstra
 				}
 			}
 
+			//stop runtime stopwatch
+			watch.Stop();
+
+			//print all distances from source
 			Print(distances, graph.Count);
+
+			//write elapsed ms of dijkstra's
+			Console.WriteLine($"\nRuntime: {watch.Elapsed.TotalMilliseconds}ms");
 		}
 
 		//gets index of minimum distance
